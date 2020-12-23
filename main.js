@@ -15,23 +15,31 @@ const randomChoreDoorGenerator = ()=>{
     let choreDoor = Math.floor(Math.random() *numClosedDoors);
 
     if(choreDoor===0){
-
+        openDoor1 = botDoorPath;
+        openDoor2 = beachDoorPath;
+        openDoor3 = spaceDoorPath;
     }else if(choreDoor===1){
-
+        openDoor2 = botDoorPath;
+        openDoor1 = beachDoorPath;
+        openDoor3 = spaceDoorPath;
     }else if(choreDoor===2){
-        
+        openDoor3 = botDoorPath;
+        openDoor1 = spaceDoorPath;
+        openDoor2 = beachDoorPath;
     }
 }
 
 doorimg1.onclick=()=>{
-    doorimg1.src = botDoorPath;
+    doorimg1.src = openDoor1;
 }
 
 doorimg2.onclick = () =>{
-    doorimg2.src=beachDoorPath;
+    doorimg2.src=openDoor2;
 
 }
 
 doorimg3.onclick = () =>{
-    doorimg3.src= spaceDoorPath;
+    doorimg3.src= openDoor3;
 }
+
+randomChoreDoorGenerator();
