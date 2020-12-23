@@ -7,6 +7,8 @@ const beachDoorPath = 'https://content.codecademy.com/projects/chore-door/images
 const spaceDoorPath =  'https://content.codecademy.com/projects/chore-door/images/space.svg';
 const closedDoorPath =  'https://content.codecademy.com/projects/chore-door/images/closed_door.svg';
 
+const startButton = document.getElementById('start');
+
 let openDoor1,
     openDoor2,
     openDoor3;
@@ -25,8 +27,9 @@ const playDoor = () =>{
     numClosedDoors--;
 
     if(numClosedDoors === 0){
-        //gameOver()
-    }else{  //gameOver
+        gameOver('win');
+    }else{  
+        gameOver('lose');
     }
 }
 
@@ -69,6 +72,10 @@ doorimg3.onclick = () =>{
         playDoor();
     }
 }
-
+const gameOver = (status)=>{
+    if(status === 'win'){
+        startButton.innerHTML = 'Você ganhou! jogar de novo?';
+    }
+}
 
 randomChoreDoorGenerator();
