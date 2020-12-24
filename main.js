@@ -37,9 +37,7 @@ const playDoor = (doorimg1, doorimg2, doorimg3) =>{
 
     if(numClosedDoors === 0){
         gameOver('win');
-    } else if(isBot(door)){
-        gameOver();
-    } else {  
+    } else if(isBot(doorimg1,doorimg2,doorimg3)){
         gameOver();
     } 
 }
@@ -63,35 +61,48 @@ const randomChoreDoorGenerator = ()=>{
 }
 
 doorimg1.onclick=()=>{
-    if(!isClicked(doorimg1)){
+    if(currentlyPlaying && !isClicked(doorimg1)){
         doorimg1.src = openDoor1;
         playDoor(doorimg1);
     }
     
-    if(currentlyPlaying&& !isClicked(door)){
-        
-    }
+ 
 }
 
 doorimg2.onclick = () =>{
-    if(!isClicked(doorimg2)){
+    if(currentlyPlaying && !isClicked(doorimg2)){
         doorimg2.src=openDoor2;
         playDoor(doorimg2);
     } 
-    if(currentlyPlaying&& !isClicked(door)){
-        
-    }
-
+   
 }
 
 doorimg3.onclick = () =>{
-    if(!isClicked(doorimg3)){
+    if(currentlyPlaying && !isClicked(doorimg3)){
         doorimg3.src= openDoor3;
         playDoor(doorimg3);
     }
-    if(currentlyPlaying&& !isClicked(door)){
         
-    }
+    
+}
+
+startButton.onclick=()=>{
+    numClosedDoors=3;
+    startRound();
+    randomChoreDoorGenerator
+    
+}
+
+
+const startRound=()=>{
+    doorimg1.src = closedDoorPath;
+    doorimg2.src = closedDoorPath;
+    doorimg3.src = closedDoorPath;
+
+    
+
+    startButton.innerHTML = 'Boa sorte!';
+    currentlyPlaying = true;
 }
 const gameOver = (status)=>{
     if(status === 'win'){
@@ -101,7 +112,7 @@ const gameOver = (status)=>{
     }
 
 
-    currentlyPlaying=false;
+    currentlyPlaying = false;
 }
 
 randomChoreDoorGenerator();
